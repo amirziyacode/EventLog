@@ -1,16 +1,62 @@
 #include <iostream>
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+#include "Event/BSTLog.h"
+#include "Event/Event.h"
+
 int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the <b>lang</b> variable name to see how CLion can help you rename it.
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+    BSTLog bstLog;
+    int choice;
+    while (1) {
+        cout << "\n--- Event Management System ---" << endl;
+        cout << "0. ShowAllEvents \n1. Insert Event\n2. Delete Event\n3. Search Event by timeStamp\n4. Search Range\n5. Find Closest\n6. countCategoriesByRange\n7. Tree Stats\n8. Exit\nChoice: ";
+        cin >> choice;
+        if (choice == 0) {
+            bstLog.displayAllEvents();
+        }
+        else if (choice == 1) {
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
+            int id,timeStamp;
+            string category,description;
+            cout << "ID, Timestamp, Category, Description: ";
+            cin >> id >> timeStamp >> category >> description;
+            Event newEvent;
+            newEvent.setId(id);
+            newEvent.setTimestamp(timeStamp);
+            newEvent.setCategory(category);
+            newEvent.setDescription(description);
+            bstLog.insertEvent(newEvent);
+        }
+        else if (choice == 2) {
+            int timeStamp;
+            cout << "Enter Event TimeStamp: ";
+            cin >> timeStamp;
+            bstLog.deleteEvent(timeStamp);
+        }else if (choice == 3) {
+            int timestamp;
+            cout << "Enter Event Timestamp: ";
+            cin >> timestamp;
+            bstLog.searchEventByTimestamp(timestamp);
+        }else if (choice == 4) {
+            int t1,t2;
+            cout << "Enter range of your Event want to find it (t1,t2)!";
+            cin >> t1 >> t2;
+            bstLog.getEventsBetween(t1,t2);
+        }else if (choice == 5) {
+            int time;
+            cout << "Enter Your TimeStamp: ";
+            cin >> time;
+            bstLog.findClosestEvent(time);
+        }else if (choice == 6) {
+            int t1,t2;
+            cout << "Enter range of your Event want to find it (t1,t2)!";
+            cin >> t1 >> t2;
+            bstLog.countCategories(t1,t2);
+        }else if (choice == 7) {
+            bstLog.showStatistics();
+        }else if (choice == 8) {
+            cout << "Good Bye!" << endl;
+            break;
+        }
     }
-
     return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }

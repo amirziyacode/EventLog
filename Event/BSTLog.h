@@ -13,22 +13,27 @@ class BSTLog {
     private:
     Node* root = NULL;
     void inorder(Node*);
-    Node* insertEvent(Node*,int,int,string,string);
-    Node* searchEvent(Node*,int);
-    Node* deleteByEventID(Node*,int);
+    Node* insertEvent(Node*,Event);
+    Node* deleteEvent(Node*,int);
     Node* minValueNode(Node*);
-    void getEventsBetween(Node*,int,int);
-    void countCategories(Node*,int ,int , map<string,int>&);
+    void getEventsBetween(Node*,int,int,int&);
+    void countCategories(Node*,int ,int);
+    int getTotalDepth(Node*,int);
+    int countNodes(Node*);
+    Node* searchEventByTimestamp(Node*,int);
+    void collectCategories(Node*,int,int,map<string,int>&,int&);
     public:
-    void insertEvent(int,int,string,string);
-    Event searchEvent(int);
+    void insertEvent(Event);
+    void searchEventByTimestamp(int);
     void displayAllEvents();
-    void deleteByEventID(int);
+    void deleteEvent(int);
     int getHeight(Node*);
     void getEventsBetween(int,int);
     void findClosestEvent(int);
     void showStatistics();
     void countCategories(int ,int);
+    int getTotalDepth(int);
+    int countNodes();
 };
 
 

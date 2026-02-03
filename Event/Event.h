@@ -14,6 +14,7 @@ private:
     string category;
     string description;
     public:
+    Event();
     Event(int,int,string,string);
     int getId() {
         return id;
@@ -26,6 +27,18 @@ private:
     }
     string getDescription() {
         return description;
+    }
+    void setId(int _id) {
+        id = _id;
+    };
+    void setTimestamp(int _timestamp) {
+        timestamp = _timestamp;
+    }
+    void setCategory(string _category) {
+        category = _category;
+    }
+    void setDescription(string _description) {
+        description = _description;
     }
 };
 
