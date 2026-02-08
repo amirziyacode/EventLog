@@ -34,7 +34,6 @@ void BSTLog::searchEventByTimestamp(int timeStamp) {
        Event find = result->data;
        cout << "Event with: " << timeStamp << " {" << "ID: " <<  find.getId() << " category: " << find.getCategory() << " description: " << find.getDescription() << "} " << " founded ! "<< endl;
    }
-
 }
 
 Node * BSTLog::searchEventByTimestamp(Node * r, int timeStamp) {
@@ -43,9 +42,8 @@ Node * BSTLog::searchEventByTimestamp(Node * r, int timeStamp) {
     }
     if (timeStamp > r->data.getTimestamp()) {
         return searchEventByTimestamp(r->right, timeStamp);
-    }else {
-        return searchEventByTimestamp(r->left, timeStamp);
     }
+    return searchEventByTimestamp(r->left, timeStamp);
 }
 
 void BSTLog::displayAllEvents() {
@@ -69,7 +67,6 @@ void BSTLog::deleteEvent(int timestamp) {
     }else {
         cout << "Event Timestamp " << timestamp << " deleted" << endl;
     }
-    root = deleteEvent(root, timestamp);
 }
 
 Node* BSTLog::deleteEvent(Node * r, int timestamp) {
@@ -84,7 +81,7 @@ Node* BSTLog::deleteEvent(Node * r, int timestamp) {
             Node* temp = r->right;
             delete r;
             return temp;
-        } else if (r->right == nullptr) {
+        }if (r->right == nullptr) {
             Node* temp = r->left;
             delete r;
             return temp;
