@@ -1,3 +1,5 @@
+<img width="1536" height="1024" alt="ChatGPT Image Feb 27, 2026, 08_09_34 PM" src="https://github.com/user-attachments/assets/a8dc117f-9f38-48f6-97d1-e03779231567" />
+
 # EventLogger
 
 **EventLogger** is a C++ project for managing and storing events using a  
